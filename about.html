@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | HealthBridge Portal</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#0284c7', dark: '#0369a1' },
+                        secondary: '#0f172a', accent: '#0ea5e9',
+                        bgbase: 'var(--color-bg-base)', bgsurface: 'var(--color-bg-surface)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- Global Header Placeholder -->
+    <div id="global-header"></div>
+    
+    <!-- Global Mobile Menu Placeholder -->
+    <div id="global-mobile-menu"></div>
+
+    <main class="pt-20">
+        <!-- Section 1: About HealthBridge -->
+        <section class="py-20 bg-base overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/3]" data-aos="fade-right">
+                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=2000" alt="HealthBridge Team" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-white">
+                            <p class="font-bold text-2xl">Innovating Healthcare Delivery</p>
+                        </div>
+                    </div>
+                    
+                    <div data-aos="fade-left">
+                        <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Our Story</h1>
+                        <p class="text-lg text-text-muted mb-6">
+                            Founded with a vision to bridge the gap between complex medical systems and patient needs, HealthBridge Portal is a premier technology platform that puts you in control of your health.
+                        </p>
+                        <h2 class="text-2xl font-bold mb-4">Our Vision</h2>
+                        <p class="text-text-muted mb-6">
+                            To create a world where high-quality healthcare is seamlessly accessible, transparent, and effortlessly managed through intelligent technology.
+                        </p>
+                        <h2 class="text-2xl font-bold mb-4">Our Mission</h2>
+                        <p class="text-text-muted">
+                            To empower patients and healthcare providers with secure, modern, and intuitive tools that foster better connections and improve health outcomes globally.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Why HealthBridge -->
+        <section class="py-24 bg-surface">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose HealthBridge</h2>
+                    <p class="text-text-muted text-lg max-w-2xl mx-auto">We combine advanced technology with a patient-first approach to deliver an unparalleled healthcare experience.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature Cards -->
+                    <div class="premium-card p-8 group" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-2xl mb-6 transition-transform group-hover:scale-110 group-hover:rotate-6">
+                            <i class="fa-solid fa-heart-circle-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Patient First</h3>
+                        <p class="text-text-muted">Every feature is designed around your needs, ensuring convenience and compassionate care.</p>
+                    </div>
+                    
+                    <div class="premium-card p-8 group" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="w-14 h-14 rounded-2xl bg-teal-500/10 text-teal-600 flex items-center justify-center text-2xl mb-6 transition-transform group-hover:scale-110 group-hover:rotate-6">
+                            <i class="fa-solid fa-shield-virus"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Secure Healthcare</h3>
+                        <p class="text-text-muted">Bank-level encryption protects your sensitive medical records and communications.</p>
+                    </div>
+
+                    <div class="premium-card p-8 group" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-2xl mb-6 transition-transform group-hover:scale-110 group-hover:rotate-6">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Connected Care</h3>
+                        <p class="text-text-muted">Your entire medical team in one place, sharing real-time insights for better treatment.</p>
+                    </div>
+
+                    <div class="premium-card p-8 group" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-600 flex items-center justify-center text-2xl mb-6 transition-transform group-hover:scale-110 group-hover:rotate-6">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Easy Access</h3>
+                        <p class="text-text-muted">Access your health information anytime, anywhere, on any device with our responsive platform.</p>
+                    </div>
+
+                    <div class="premium-card p-8 group md:col-span-2 md:w-1/2 md:mx-auto lg:col-span-1 lg:w-full" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="w-14 h-14 rounded-2xl bg-orange-500/10 text-orange-600 flex items-center justify-center text-2xl mb-6 transition-transform group-hover:scale-110 group-hover:rotate-6">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Trusted Professionals</h3>
+                        <p class="text-text-muted">We rigorously vet all healthcare providers to ensure you receive the highest standard of care.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Our Healthcare Mission -->
+        <section class="py-24 bg-primary text-white overflow-hidden relative">
+            <div class="absolute inset-0 opacity-10">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2000" alt="Mission Background" class="w-full h-full object-cover">
+            </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-up-right" data-aos-duration="1000">
+                        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Empowering a Healthier Tomorrow</h2>
+                        <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+                            We believe that healthcare should be proactive, not reactive. By providing the tools for comprehensive health tracking and instant access to professionals, we are building a healthier future for everyone.
+                        </p>
+                        <div class="grid grid-cols-2 gap-8 border-t border-white/20 pt-8">
+                            <div>
+                                <p class="text-4xl font-bold mb-2">1M+</p>
+                                <p class="text-sm text-blue-200">Consultations Completed</p>
+                            </div>
+                            <div>
+                                <p class="text-4xl font-bold mb-2">50+</p>
+                                <p class="text-sm text-blue-200">Specialties Covered</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20" data-aos="fade-up-left" data-aos-duration="1000" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&q=80&w=1000" alt="Healthcare professionals analyzing data" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer Placeholder -->
+    <div id="global-footer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

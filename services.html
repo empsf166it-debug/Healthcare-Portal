@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | HealthBridge Portal</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#0284c7', dark: '#0369a1' },
+                        secondary: '#0f172a', accent: '#0ea5e9',
+                        bgbase: 'var(--color-bg-base)', bgsurface: 'var(--color-bg-surface)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- Global Header Placeholder -->
+    <div id="global-header"></div>
+    
+    <!-- Global Mobile Menu Placeholder -->
+    <div id="global-mobile-menu"></div>
+
+    <main class="pt-20">
+        <!-- Section 1: Services Hero -->
+        <section class="relative py-24 bg-base border-b border-custom">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="fade-up">
+                <div class="w-24 h-24 mx-auto bg-primary/10 text-primary rounded-full flex items-center justify-center text-4xl mb-6">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Healthcare Services Designed Around You</h1>
+                <p class="text-xl text-text-muted max-w-3xl mx-auto">
+                    Experience a comprehensive suite of digital healthcare services tailored to meet your medical needs, entirely at your fingertips.
+                </p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto mt-16 px-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="rounded-3xl overflow-hidden shadow-2xl aspect-video md:aspect-[21/9]">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2000" alt="Healthcare Technology" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Complete Healthcare Services Grid -->
+        <section class="py-24 bg-surface">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="premium-card p-6 group" data-aos="scale-in" data-aos-delay="100">
+                        <div class="w-12 h-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-calendar-plus"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Appointment Booking</h3>
+                        <p class="text-sm text-text-muted mb-4">Schedule visits with specialists in seconds.</p>
+                        <a href="#" class="text-blue-600 font-semibold text-sm group-hover:underline">Explore <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+                    
+                    <div class="premium-card p-6 group" data-aos="scale-in" data-aos-delay="150">
+                        <div class="w-12 h-12 rounded-lg bg-green-100 text-green-600 flex items-center justify-center text-xl mb-4 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Virtual Consultation</h3>
+                        <p class="text-sm text-text-muted mb-4">Connect with doctors via secure video calls.</p>
+                        <a href="#" class="text-green-600 font-semibold text-sm group-hover:underline">Explore <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <div class="premium-card p-6 group" data-aos="scale-in" data-aos-delay="200">
+                        <div class="w-12 h-12 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Medical Records</h3>
+                        <p class="text-sm text-text-muted mb-4">Store and share your health history securely.</p>
+                        <a href="#" class="text-purple-600 font-semibold text-sm group-hover:underline">Explore <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <div class="premium-card p-6 group" data-aos="scale-in" data-aos-delay="250">
+                        <div class="w-12 h-12 rounded-lg bg-red-100 text-red-600 flex items-center justify-center text-xl mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-prescription-bottle-medical"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Prescriptions</h3>
+                        <p class="text-sm text-text-muted mb-4">Digital prescriptions and easy pharmacy routing.</p>
+                        <a href="#" class="text-red-600 font-semibold text-sm group-hover:underline">Explore <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <div class="premium-card p-6 group" data-aos="scale-in" data-aos-delay="300">
+                        <div class="w-12 h-12 rounded-lg bg-yellow-100 text-yellow-600 flex items-center justify-center text-xl mb-4 group-hover:bg-yellow-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-vial-virus"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Lab Reports</h3>
+                        <p class="text-sm text-text-muted mb-4">View test results and analytics instantly.</p>
+                        <a href="#" class="text-yellow-600 font-semibold text-sm group-hover:underline">Explore <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <div class="premium-card p-6 group" data-aos="scale-in" data-aos-delay="350">
+                        <div class="w-12 h-12 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-xl mb-4 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Medication Management</h3>
+                        <p class="text-sm text-text-muted mb-4">Track adherence and get timely reminders.</p>
+                        <a href="#" class="text-orange-600 font-semibold text-sm group-hover:underline">Explore <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <div class="premium-card p-6 group" data-aos="scale-in" data-aos-delay="400">
+                        <div class="w-12 h-12 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center text-xl mb-4 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Health Tracking</h3>
+                        <p class="text-sm text-text-muted mb-4">Monitor vitals like blood pressure and weight.</p>
+                        <a href="#" class="text-teal-600 font-semibold text-sm group-hover:underline">Explore <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <div class="premium-card p-6 group" data-aos="scale-in" data-aos-delay="450">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-file-shield"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Insurance Management</h3>
+                        <p class="text-sm text-text-muted mb-4">Keep policies and claim statuses up to date.</p>
+                        <a href="#" class="text-indigo-600 font-semibold text-sm group-hover:underline">Explore <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Smart Healthcare Experience (Timeline) -->
+        <section class="py-24 bg-alt overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20" data-aos="fade-down">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">The Smart Healthcare Experience</h2>
+                    <p class="text-text-muted text-lg max-w-2xl mx-auto">A seamless journey from finding a specialist to ongoing health tracking.</p>
+                </div>
+
+                <div class="relative">
+                    <!-- Central Line -->
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20"></div>
+
+                    <!-- Step 1 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between mb-16 relative">
+                        <div class="md:w-5/12 text-center md:text-right mb-6 md:mb-0" data-aos="fade-right">
+                            <h3 class="text-2xl font-bold mb-2">1. Find a Doctor</h3>
+                            <p class="text-text-muted">Search through our verified network of specialists based on your specific needs, location, and insurance.</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl relative z-10 border-4 border-alt shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                            1
+                        </div>
+                        <div class="w-full md:w-5/12" data-aos="fade-left">
+                            <div class="premium-card p-4">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1000" alt="Find Doctor" class="w-full h-48 object-cover rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col md:flex-row-reverse items-center justify-between mb-16 relative">
+                        <div class="md:w-5/12 text-center md:text-left mb-6 md:mb-0" data-aos="fade-left">
+                            <h3 class="text-2xl font-bold mb-2">2. Book Appointment</h3>
+                            <p class="text-text-muted">Select a convenient time slot and book instantly without waiting on hold.</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl relative z-10 border-4 border-alt shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                            2
+                        </div>
+                        <div class="w-full md:w-5/12" data-aos="fade-right">
+                            <div class="premium-card p-4">
+                                <img src="https://images.unsplash.com/photo-1603796846097-bee99e4a601f?auto=format&fit=crop&q=80&w=1000" alt="Book Appointment" class="w-full h-48 object-cover rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between mb-16 relative">
+                        <div class="md:w-5/12 text-center md:text-right mb-6 md:mb-0" data-aos="fade-right">
+                            <h3 class="text-2xl font-bold mb-2">3. Consult</h3>
+                            <p class="text-text-muted">Connect securely via high-definition video or visit in-person for comprehensive care.</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl relative z-10 border-4 border-alt shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                            3
+                        </div>
+                        <div class="w-full md:w-5/12" data-aos="fade-left">
+                            <div class="premium-card p-4">
+                                <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=1000" alt="Consult" class="w-full h-48 object-cover rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col md:flex-row-reverse items-center justify-between mb-16 relative">
+                        <div class="md:w-5/12 text-center md:text-left mb-6 md:mb-0" data-aos="fade-left">
+                            <h3 class="text-2xl font-bold mb-2">4. Receive Prescription</h3>
+                            <p class="text-text-muted">Digital prescriptions are sent immediately to your dashboard or preferred pharmacy.</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl relative z-10 border-4 border-alt shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                            4
+                        </div>
+                        <div class="w-full md:w-5/12" data-aos="fade-right">
+                            <div class="premium-card p-4">
+                                <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80&w=1000" alt="Prescription" class="w-full h-48 object-cover rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between relative">
+                        <div class="md:w-5/12 text-center md:text-right mb-6 md:mb-0" data-aos="fade-right">
+                            <h3 class="text-2xl font-bold mb-2">5. Track Health</h3>
+                            <p class="text-text-muted">Monitor your recovery, manage medications, and view all updates on your personalized dashboard.</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl relative z-10 border-4 border-alt shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                            5
+                        </div>
+                        <div class="w-full md:w-5/12" data-aos="fade-left">
+                            <div class="premium-card p-4">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" alt="Track Health" class="w-full h-48 object-cover rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer Placeholder -->
+    <div id="global-footer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

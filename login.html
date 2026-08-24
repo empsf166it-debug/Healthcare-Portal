@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | HealthBridge Portal</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#0284c7', dark: '#0369a1' },
+                        secondary: '#0f172a', accent: '#0ea5e9',
+                        bgbase: 'var(--color-bg-base)', bgsurface: 'var(--color-bg-surface)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-alt min-h-screen flex items-center justify-center p-4 selection:bg-primary selection:text-white transition-colors duration-300 overflow-x-hidden">
+
+    <!-- Top Right Toggles -->
+    <div class="absolute top-6 right-6 flex items-center gap-4">
+        <button id="theme-toggle" class="p-2 rounded-full bg-surface shadow-sm border border-custom text-text-muted hover:text-primary transition-colors">
+            <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+        <button id="rtl-toggle" class="font-bold text-sm bg-surface shadow-sm border border-custom px-3 py-2 rounded-full text-text-muted hover:text-primary transition-colors">
+            RTL
+        </button>
+    </div>
+
+    <!-- Centered Auth Card -->
+    <div class="w-full max-w-md">
+        <div class="bg-surface rounded-2xl shadow-xl border border-custom p-8">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <a href="index.html" class="inline-flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg">
+                        <i class="fa-solid fa-briefcase-medical text-2xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-heading tracking-tight">HealthBridge</span>
+                </a>
+                <p class="text-text-muted mt-3">Welcome back! Please login to your account.</p>
+            </div>
+            <form id="loginForm">
+                <div class="mb-5">
+                    <label class="block text-sm font-semibold mb-2 text-heading">Email Address</label>
+                    <div class="relative">
+                        <i class="fa-regular fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
+                        <input type="email" class="w-full bg-alt border border-custom rounded-lg pl-11 pr-4 py-3 text-text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="name@example.com" value="demo@healthbridge.com" required>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <label class="block text-sm font-semibold mb-2 text-heading">Password</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
+                        <input type="password" id="passwordInput" class="w-full bg-alt border border-custom rounded-lg pl-11 pr-12 py-3 text-text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="••••••••" value="password" required>
+                        <button type="button" id="togglePassword" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-primary transition-colors">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-8">
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer">
+                        <span class="text-sm text-text-muted group-hover:text-heading transition-colors">Remember Me</span>
+                    </label>
+                    <a href="#" class="text-sm font-semibold text-primary hover:underline">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="w-full btn-primary py-3 text-lg rounded-xl mb-6">Login to Dashboard</button>
+            </form>
+
+            <div class="relative flex items-center justify-center mb-6">
+                <div class="border-t border-custom w-full absolute"></div>
+                <span class="bg-surface px-4 text-xs font-semibold text-text-muted relative z-10 uppercase tracking-wider">Or continue with</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <button class="flex items-center justify-center py-2.5 border border-custom rounded-xl hover:bg-alt hover:border-primary hover:-translate-y-1 hover:shadow-md transition-all duration-300 bg-surface group">
+                    <i class="fa-brands fa-google text-xl text-heading group-hover:text-red-500 transition-colors"></i>
+                </button>
+                <button class="flex items-center justify-center py-2.5 border border-custom rounded-xl hover:bg-alt hover:border-primary hover:-translate-y-1 hover:shadow-md transition-all duration-300 bg-surface group">
+                    <i class="fa-brands fa-facebook-f text-xl text-heading group-hover:text-blue-600 transition-colors"></i>
+                </button>
+                <button class="flex items-center justify-center py-2.5 border border-custom rounded-xl hover:bg-alt hover:border-primary hover:-translate-y-1 hover:shadow-md transition-all duration-300 bg-surface group">
+                    <i class="fa-brands fa-apple text-xl text-heading group-hover:text-gray-900 dark:group-hover:text-white transition-colors"></i>
+                </button>
+            </div>
+
+            <p class="text-center text-sm text-text-muted">
+                Don't have an account? <a href="signup.html" class="font-bold text-primary hover:underline">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Password visibility toggle
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('passwordInput');
+        
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fa-regular fa-eye"></i>' : '<i class="fa-regular fa-eye-slash"></i>';
+        });
+
+        // Mock login redirect
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

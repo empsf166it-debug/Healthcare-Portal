@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Doctor | HealthBridge Portal</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#0284c7', dark: '#0369a1' },
+                        secondary: '#0f172a', accent: '#0ea5e9',
+                        bgbase: 'var(--color-bg-base)', bgsurface: 'var(--color-bg-surface)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- Global Header Placeholder -->
+    <div id="global-header"></div>
+    
+    <!-- Global Mobile Menu Placeholder -->
+    <div id="global-mobile-menu"></div>
+
+    <main class="pt-20">
+        <!-- Section 1: Search & Filter Hero -->
+        <section class="bg-primary text-white py-20 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <img src="assets/images/doctors-hero-bg.jpg" alt="Background" class="w-full h-full object-cover mix-blend-overlay">
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6" data-aos="fade-down">Find Your Specialist</h1>
+                <p class="text-blue-100 text-lg mb-10 max-w-2xl mx-auto" data-aos="fade-up">Connect with top-rated medical professionals. Book virtual consultations or in-person visits instantly.</p>
+                
+                <!-- Search Box -->
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-2 md:p-3 flex flex-col md:flex-row gap-2" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="flex-1 flex items-center bg-gray-50 rounded-xl px-4 py-3 border border-gray-200">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400 mr-3"></i>
+                        <input type="text" placeholder="Search by name or condition..." class="w-full bg-transparent text-gray-800 focus:outline-none">
+                    </div>
+                    <div class="flex-1 flex items-center bg-gray-50 rounded-xl px-4 py-3 border border-gray-200">
+                        <i class="fa-solid fa-location-dot text-gray-400 mr-3"></i>
+                        <input type="text" placeholder="Location or Zip Code..." class="w-full bg-transparent text-gray-800 focus:outline-none">
+                    </div>
+                    <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-xl transition-colors">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Directory -->
+        <section class="py-16 bg-base">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- Sidebar Filters -->
+                    <aside class="w-full md:w-64 shrink-0">
+                        <div class="bg-surface border border-custom rounded-2xl p-6 sticky top-28 shadow-sm">
+                            <h3 class="font-bold text-lg mb-4 border-b border-custom pb-3">Filters</h3>
+                            
+                            <!-- Specialty -->
+                            <div class="mb-6">
+                                <h4 class="font-semibold mb-3 text-sm text-text-muted uppercase">Specialty</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4 cursor-pointer" checked>
+                                        <span class="text-sm group-hover:text-primary transition-colors">Cardiology</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4 cursor-pointer">
+                                        <span class="text-sm group-hover:text-primary transition-colors">Neurology</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4 cursor-pointer">
+                                        <span class="text-sm group-hover:text-primary transition-colors">Pediatrics</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4 cursor-pointer">
+                                        <span class="text-sm group-hover:text-primary transition-colors">Orthopedics</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Consultation Type -->
+                            <div>
+                                <h4 class="font-semibold mb-3 text-sm text-text-muted uppercase">Consultation</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4 cursor-pointer" checked>
+                                        <span class="text-sm group-hover:text-primary transition-colors">Virtual (Video)</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4 cursor-pointer" checked>
+                                        <span class="text-sm group-hover:text-primary transition-colors">In-Person</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Doctor Grid -->
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-bold">Available Doctors <span class="text-text-muted font-normal text-sm">(124 results)</span></h2>
+                            <select class="bg-surface border border-custom text-sm rounded-lg px-3 py-2 outline-none focus:border-primary">
+                                <option>Most Relevant</option>
+                                <option>Highest Rated</option>
+                                <option>Earliest Available</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Doctor Card 1 -->
+                            <div class="bg-surface border border-custom rounded-2xl p-6 flex flex-col md:flex-row gap-6 hover:shadow-lg hover:border-primary transition-all group" data-aos="fade-up">
+                                <div class="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-2xl overflow-hidden border-2 border-primary/20 group-hover:border-primary transition-colors">
+                                    <img src="https://i.pravatar.cc/150?img=32" alt="Dr. Sarah Jenkins" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-heading group-hover:text-primary transition-colors">Dr. Sarah Jenkins</h3>
+                                            <p class="text-primary font-semibold text-sm">Cardiologist</p>
+                                        </div>
+                                        <div class="flex items-center gap-1 bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs font-bold">
+                                            <i class="fa-solid fa-star"></i> 4.9
+                                        </div>
+                                    </div>
+                                    <p class="text-text-muted text-sm mb-4 line-clamp-2">Dr. Jenkins is a board-certified cardiologist with over 15 years of experience specializing in preventive cardiology and heart failure management.</p>
+                                    
+                                    <div class="flex flex-wrap gap-4 text-sm font-semibold mb-4 border-t border-custom pt-4">
+                                        <div class="flex items-center gap-2 text-text-muted"><i class="fa-solid fa-graduation-cap text-primary"></i> 15 yrs exp.</div>
+                                        <div class="flex items-center gap-2 text-text-muted"><i class="fa-solid fa-video text-green-500"></i> Virtual</div>
+                                        <div class="flex items-center gap-2 text-text-muted"><i class="fa-solid fa-hospital text-blue-500"></i> In-Person</div>
+                                    </div>
+                                    <div class="flex flex-wrap items-center justify-between gap-4">
+                                        <div class="text-sm font-bold text-green-600 bg-green-100 px-3 py-1.5 rounded-lg">Next Available: Today, 2:30 PM</div>
+                                        <button class="btn-primary py-2 px-6 shadow-md text-sm">Book Appointment</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Doctor Card 2 -->
+                            <div class="bg-surface border border-custom rounded-2xl p-6 flex flex-col md:flex-row gap-6 hover:shadow-lg hover:border-primary transition-all group" data-aos="fade-up" data-aos-delay="100">
+                                <div class="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-2xl overflow-hidden border-2 border-primary/20 group-hover:border-primary transition-colors">
+                                    <img src="https://i.pravatar.cc/150?img=11" alt="Dr. Michael Chen" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-heading group-hover:text-primary transition-colors">Dr. Michael Chen</h3>
+                                            <p class="text-primary font-semibold text-sm">Neurologist</p>
+                                        </div>
+                                        <div class="flex items-center gap-1 bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs font-bold">
+                                            <i class="fa-solid fa-star"></i> 4.8
+                                        </div>
+                                    </div>
+                                    <p class="text-text-muted text-sm mb-4 line-clamp-2">Specializing in memory disorders and neurodegenerative diseases. Dedicated to comprehensive patient-centered neurological care.</p>
+                                    
+                                    <div class="flex flex-wrap gap-4 text-sm font-semibold mb-4 border-t border-custom pt-4">
+                                        <div class="flex items-center gap-2 text-text-muted"><i class="fa-solid fa-graduation-cap text-primary"></i> 12 yrs exp.</div>
+                                        <div class="flex items-center gap-2 text-text-muted"><i class="fa-solid fa-video text-green-500"></i> Virtual</div>
+                                    </div>
+                                    <div class="flex flex-wrap items-center justify-between gap-4">
+                                        <div class="text-sm font-bold text-green-600 bg-green-100 px-3 py-1.5 rounded-lg">Next Available: Tomorrow, 10:00 AM</div>
+                                        <button class="btn-primary py-2 px-6 shadow-md text-sm">Book Appointment</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Pagination -->
+                            <div class="flex justify-center mt-10">
+                                <div class="flex gap-2">
+                                    <button class="w-10 h-10 rounded-lg border border-custom flex items-center justify-center hover:bg-alt transition-colors"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="w-10 h-10 rounded-lg bg-primary text-white font-bold flex items-center justify-center shadow-md">1</button>
+                                    <button class="w-10 h-10 rounded-lg border border-custom flex items-center justify-center hover:bg-alt transition-colors">2</button>
+                                    <button class="w-10 h-10 rounded-lg border border-custom flex items-center justify-center hover:bg-alt transition-colors">3</button>
+                                    <button class="w-10 h-10 rounded-lg border border-custom flex items-center justify-center hover:bg-alt transition-colors"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer Placeholder -->
+    <div id="global-footer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

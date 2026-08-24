@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | HealthBridge Portal</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#0284c7', dark: '#0369a1' },
+                        secondary: '#0f172a', accent: '#0ea5e9',
+                        bgbase: 'var(--color-bg-base)', bgsurface: 'var(--color-bg-surface)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- Global Header Placeholder -->
+    <div id="global-header"></div>
+    
+    <!-- Global Mobile Menu Placeholder -->
+    <div id="global-mobile-menu"></div>
+
+    <main class="pt-20">
+        <!-- Contact Section -->
+        <section class="py-20 bg-base overflow-hidden relative">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-alt rounded-l-[100px] -mr-20 hidden lg:block border-l border-custom shadow-inner"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-down">
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Get in Touch</h1>
+                    <p class="text-lg text-text-muted">We're here to help. Reach out for support, inquiries, or feedback regarding our platform.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                    
+                    <!-- Contact Info Cards -->
+                    <div class="space-y-6" data-aos="fade-right">
+                        
+                        <div class="bg-surface rounded-2xl p-8 border border-custom shadow-sm hover:border-primary hover:shadow-md transition-all flex gap-6 items-start group">
+                            <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Technical Support</h3>
+                                <p class="text-text-muted mb-2">Need help with your account or dashboard?</p>
+                                <a href="mailto:support@healthbridge.com" class="text-primary font-bold hover:underline">support@healthbridge.com</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-surface rounded-2xl p-8 border border-custom shadow-sm hover:border-primary hover:shadow-md transition-all flex gap-6 items-start group">
+                            <div class="w-14 h-14 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Phone Inquiries</h3>
+                                <p class="text-text-muted mb-2">Available Mon-Fri, 9am - 6pm EST.</p>
+                                <a href="tel:+18005550199" class="text-primary font-bold hover:underline">+1 (800) 555-0199</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-surface rounded-2xl p-8 border border-custom shadow-sm hover:border-primary hover:shadow-md transition-all flex gap-6 items-start group">
+                            <div class="w-14 h-14 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Headquarters</h3>
+                                <p class="text-text-muted">123 HealthBridge Plaza<br>Medical District, NY 10001</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Icons -->
+                        <div class="pt-6" data-aos="fade-up">
+                            <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="#" class="w-12 h-12 rounded-full bg-surface border border-custom flex items-center justify-center text-text-muted hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                                    <i class="fa-brands fa-twitter text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-surface border border-custom flex items-center justify-center text-text-muted hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                                    <i class="fa-brands fa-linkedin-in text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-surface border border-custom flex items-center justify-center text-text-muted hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                                    <i class="fa-brands fa-facebook-f text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-surface border border-custom flex items-center justify-center text-text-muted hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                                    <i class="fa-brands fa-instagram text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-surface rounded-[2rem] p-8 md:p-10 shadow-2xl border border-custom" data-aos="fade-left">
+                        <h2 class="text-2xl font-bold mb-6">Send us a message</h2>
+                        
+                        <form id="contactForm" onsubmit="event.preventDefault(); alert('Message sent successfully! We will get back to you soon.'); this.reset();">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-sm font-semibold mb-2 text-heading">First Name</label>
+                                    <input type="text" class="w-full bg-alt border border-custom rounded-xl px-4 py-3 text-text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Jane" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold mb-2 text-heading">Last Name</label>
+                                    <input type="text" class="w-full bg-alt border border-custom rounded-xl px-4 py-3 text-text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Doe" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold mb-2 text-heading">Email Address</label>
+                                <input type="email" class="w-full bg-alt border border-custom rounded-xl px-4 py-3 text-text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="jane@example.com" required>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold mb-2 text-heading">Subject</label>
+                                <select class="w-full bg-alt border border-custom rounded-xl px-4 py-3 text-text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" required>
+                                    <option value="">Select a topic...</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="billing">Billing Inquiry</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold mb-2 text-heading">Message</label>
+                                <textarea rows="4" class="w-full bg-alt border border-custom rounded-xl px-4 py-3 text-text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none" placeholder="How can we help you?" required></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full btn-primary py-4 text-lg rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">Send Message</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="h-[400px] w-full relative grayscale hover:grayscale-0 transition-all duration-500">
+            <iframe class="absolute inset-0 w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.617544258953!2d-73.98782352410292!3d40.748440371387684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1692298717804!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+    </main>
+
+    <!-- Global Footer Placeholder -->
+    <div id="global-footer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

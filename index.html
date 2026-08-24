@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthBridge Portal | Your Health. Connected.</title>
+    <meta name="description" content="Premium healthcare technology platform connecting patients, doctors, and medical records securely.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#0284c7',
+                            dark: '#0369a1'
+                        },
+                        secondary: '#0f172a',
+                        accent: '#0ea5e9',
+                        bgbase: 'var(--color-bg-base)',
+                        bgsurface: 'var(--color-bg-surface)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- Global Header Placeholder -->
+    <div id="global-header"></div>
+    
+    <!-- Global Mobile Menu Placeholder -->
+    <div id="global-mobile-menu"></div>
+
+    <main class="pt-20">
+        <!-- Section 1: Premium Hero -->
+        <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-alt pt-10 pb-20 lg:py-0">
+            <!-- Subtle background elements -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-primary/5 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Content -->
+                    <div class="max-w-2xl" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-6 border border-primary/20">
+                            <span class="relative flex h-2.5 w-2.5">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+                            </span>
+                            Your Health. Connected.
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-heading">
+                            Better Healthcare Starts With <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Better Connections</span>
+                        </h1>
+                        <p class="text-lg text-text-muted mb-8 leading-relaxed max-w-lg">
+                            HealthBridge Portal connects patients, doctors, medical records, appointments, prescriptions, and healthcare services seamlessly in one advanced platform.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="signup.html" class="btn-primary shadow-lg shadow-primary/30">Get Started <i class="fa-solid fa-arrow-right text-sm"></i></a>
+                            <a href="services.html" class="btn-secondary">Explore Healthcare Services</a>
+                        </div>
+                    </div>
+
+                    <!-- Right Content (Image & Floating UI) -->
+                    <div class="relative w-full mt-10 lg:mt-0" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                        <!-- Main Image Placeholder -->
+                        <div class="rounded-[2rem] bg-gray-200 dark:bg-gray-800 overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 aspect-square lg:aspect-[4/3]">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2000" alt="Modern healthcare consultation" class="w-full h-full object-cover">
+                        </div>
+
+                        <!-- Floating UI: Health Score -->
+                        <div class="absolute top-10 left-4 lg:-left-12 premium-card p-4 flex items-center gap-4 animate-floating backdrop-blur-md bg-white/90 dark:bg-gray-800/90 z-20">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i class="fa-solid fa-shield-heart text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-text-muted font-semibold uppercase tracking-wider">Health Score</p>
+                                <p class="text-xl font-bold text-heading">98/100</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating UI: Appointment -->
+                        <div class="absolute bottom-20 right-4 lg:-right-8 premium-card p-4 flex items-center gap-4 animate-floating-delayed backdrop-blur-md bg-white/90 dark:bg-gray-800/90 z-20">
+                            <img src="https://i.pravatar.cc/100?img=32" alt="Dr. Smith" class="w-10 h-10 rounded-full border-2 border-primary">
+                            <div>
+                                <p class="text-sm font-bold text-heading">Dr. Sarah Jenkins</p>
+                                <p class="text-xs text-text-muted">Today, 2:30 PM</p>
+                            </div>
+                            <div class="ml-2 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="fa-solid fa-video text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Healthcare Overview -->
+        <section class="py-24 bg-base">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="zoom-in">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Complete Healthcare Management</h2>
+                    <p class="text-text-muted text-lg">A unified ecosystem designed to provide you with secure access and total control over your health journey.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="premium-card p-8 group relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-2xl mb-6 relative z-10">
+                            <i class="fa-solid fa-file-medical"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 relative z-10">Digital Records</h3>
+                        <p class="text-text-muted mb-4 relative z-10">Access your complete medical history, lab results, and imaging safely from anywhere.</p>
+                        <a href="#" class="text-primary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all relative z-10">Learn more <i class="fa-solid fa-arrow-right text-sm"></i></a>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="premium-card p-8 group relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-teal-500/10 text-teal-600 flex items-center justify-center text-2xl mb-6 relative z-10">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 relative z-10">Expert Consultations</h3>
+                        <p class="text-text-muted mb-4 relative z-10">Connect with top-rated specialists for virtual or in-person visits securely.</p>
+                        <a href="#" class="text-teal-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all relative z-10">Find a doctor <i class="fa-solid fa-arrow-right text-sm"></i></a>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="premium-card p-8 group relative overflow-hidden md:col-span-2 md:w-1/2 md:mx-auto lg:col-span-1 lg:w-full" data-aos="fade-up" data-aos-delay="300">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-2xl mb-6 relative z-10">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 relative z-10">Secure Communication</h3>
+                        <p class="text-text-muted mb-4 relative z-10">End-to-end encrypted messaging with your care team for peace of mind.</p>
+                        <a href="#" class="text-indigo-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all relative z-10">View security <i class="fa-solid fa-arrow-right text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-custom pt-12" data-aos="fade-in">
+                    <div class="text-center">
+                        <p class="text-4xl font-extrabold text-primary mb-2">2M+</p>
+                        <p class="text-sm font-semibold text-text-muted uppercase tracking-wider">Active Patients</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-extrabold text-primary mb-2">5,000+</p>
+                        <p class="text-sm font-semibold text-text-muted uppercase tracking-wider">Trusted Doctors</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-extrabold text-primary mb-2">99.9%</p>
+                        <p class="text-sm font-semibold text-text-muted uppercase tracking-wider">Uptime</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-extrabold text-primary mb-2">24/7</p>
+                        <p class="text-sm font-semibold text-text-muted uppercase tracking-wider">Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Core Healthcare Services -->
+        <section class="py-24 bg-alt">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-end mb-12">
+                    <div class="max-w-2xl" data-aos="fade-right">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Core Healthcare Services</h2>
+                        <p class="text-text-muted text-lg">Everything you need to manage your health, seamlessly integrated.</p>
+                    </div>
+                    <div class="hidden md:block" data-aos="fade-left">
+                        <a href="services.html" class="btn-secondary">View All Services</a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-custom hover:border-primary transition-all duration-300 hover:shadow-lg flex items-start gap-4 group" data-aos="fade-up" data-aos-delay="0">
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Online Appointments</h4>
+                            <p class="text-text-muted text-sm mb-3">Book and manage visits instantly.</p>
+                            <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-custom hover:border-primary transition-all duration-300 hover:shadow-lg flex items-start gap-4 group" data-aos="fade-down" data-aos-delay="100">
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 dark:bg-teal-900/30 text-teal-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-stethoscope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Doctor Consultation</h4>
+                            <p class="text-text-muted text-sm mb-3">Virtual or in-person visits.</p>
+                            <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-custom hover:border-primary transition-all duration-300 hover:shadow-lg flex items-start gap-4 group" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-notes-medical"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Medical Records</h4>
+                            <p class="text-text-muted text-sm mb-3">Secure, centralized health history.</p>
+                            <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-custom hover:border-primary transition-all duration-300 hover:shadow-lg flex items-start gap-4 group" data-aos="fade-right" data-aos-delay="300">
+                        <div class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/30 text-red-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-pills"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Prescription Mgmt</h4>
+                            <p class="text-text-muted text-sm mb-3">Refills and medication history.</p>
+                            <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-custom hover:border-primary transition-all duration-300 hover:shadow-lg flex items-start gap-4 group" data-aos="fade-left" data-aos-delay="400">
+                        <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-microscope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Lab Reports</h4>
+                            <p class="text-text-muted text-sm mb-3">Instant access to test results.</p>
+                            <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-custom hover:border-primary transition-all duration-300 hover:shadow-lg flex items-start gap-4 group" data-aos="flip-up" data-aos-delay="500">
+                        <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Medication Tracking</h4>
+                            <p class="text-text-muted text-sm mb-3">Reminders and adherence stats.</p>
+                            <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Healthcare CTA -->
+        <section class="relative py-24 bg-primary overflow-hidden">
+            <div class="absolute inset-0 opacity-20">
+                <img src="assets/images/cta-bg.jpg" alt="Healthcare Technology" class="w-full h-full object-cover mix-blend-overlay">
+            </div>
+            
+            <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white" data-aos="zoom-in" data-aos-duration="1000">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Take Control of Your Healthcare Journey</h2>
+                <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                    Join thousands of patients who have transformed their healthcare experience with HealthBridge Portal. Secure, fast, and built for you.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="signup.html" class="bg-white text-primary font-bold py-4 px-8 rounded-full hover:shadow-xl hover:scale-105 transition-all">Create Your Account</a>
+                    <a href="dashboard.html" class="bg-primary-dark/50 border border-white/30 text-white font-bold py-4 px-8 rounded-full hover:bg-primary-dark transition-all backdrop-blur-sm">Explore Dashboard</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer Placeholder -->
+    <div id="global-footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

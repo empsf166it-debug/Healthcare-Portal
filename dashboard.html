@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard | HealthBridge Portal</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#0284c7', dark: '#0369a1' },
+                        secondary: '#0f172a', accent: '#0ea5e9',
+                        bgbase: 'var(--color-bg-base)', bgsurface: 'var(--color-bg-surface)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Chart.js for Health Tracking -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-base text-text-base selection:bg-primary selection:text-white transition-colors duration-300 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-64 bg-surface border-r border-custom flex flex-col transition-transform duration-300 absolute md:relative z-40 h-full -translate-x-full md:translate-x-0 shadow-xl md:shadow-none">
+            <!-- Brand -->
+            <div class="h-20 flex items-center px-6 border-b border-custom shrink-0">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+                        <i class="fa-solid fa-briefcase-medical text-sm"></i>
+                    </div>
+                    <span class="font-bold text-heading tracking-tight text-lg">HealthBridge</span>
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex-1 overflow-y-auto py-4 sidebar-nav">
+                <ul class="space-y-1 px-3">
+                    <li>
+                        <button onclick="switchView('overview', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold active bg-primary/10 text-primary transition-colors">
+                            <i class="fa-solid fa-border-all w-5"></i> Dashboard
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('appointments', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-regular fa-calendar-check w-5"></i> Appointments
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('doctors', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-solid fa-user-doctor w-5"></i> Doctors
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('records', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-regular fa-folder-open w-5"></i> Medical Records
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('prescriptions', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-solid fa-prescription-bottle-medical w-5"></i> Prescriptions
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('labs', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-solid fa-vial-virus w-5"></i> Lab Reports
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('medications', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-solid fa-pills w-5"></i> Medications
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('messages', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-regular fa-comments w-5"></i> Messages
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('tracking', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-solid fa-chart-line w-5"></i> Health Tracking
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('insurance', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-solid fa-file-shield w-5"></i> Insurance
+                        </button>
+                    </li>
+                    
+                    <li class="pt-4 mt-4 border-t border-custom">
+                        <button onclick="switchView('profile', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-regular fa-user w-5"></i> Profile
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchView('settings', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-text-muted hover:bg-alt hover:text-heading transition-colors">
+                            <i class="fa-solid fa-gear w-5"></i> Settings
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="p-4 border-t border-custom shrink-0">
+                <a href="index.html" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                    <i class="fa-solid fa-arrow-right-from-bracket w-5"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Overlay for mobile sidebar -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden relative">
+            
+            <!-- Topbar -->
+            <header class="h-20 bg-surface border-b border-custom flex justify-between items-center px-4 sm:px-6 lg:px-8 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button id="sidebar-toggle" class="md:hidden p-2 text-text-muted hover:text-primary transition-colors">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                    <h2 id="page-title" class="text-xl font-bold text-heading">Dashboard Overview</h2>
+                </div>
+                
+                <div class="flex items-center gap-4 sm:gap-6">
+                    <button id="theme-toggle" class="p-2 text-text-muted hover:text-primary transition-colors rounded-full hover:bg-alt">
+                        <i id="theme-icon" class="fa-solid fa-moon"></i>
+                    </button>
+
+                    
+                    <div class="relative">
+                        <button class="p-2 text-text-muted hover:text-primary transition-colors rounded-full hover:bg-alt relative">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500"></span>
+                        </button>
+                    </div>
+
+                    <div class="w-px h-6 bg-custom hidden sm:block"></div>
+                    
+                    <button class="flex items-center gap-3 group">
+                        <img src="https://i.pravatar.cc/150?img=68" alt="Alex Johnson" class="w-10 h-10 rounded-full border border-custom group-hover:border-primary transition-colors">
+                        <div class="hidden sm:block text-left">
+                            <p class="text-sm font-bold text-heading">Alex Johnson</p>
+                            <p class="text-xs text-text-muted">Patient ID: #98421</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-xs text-text-muted hidden sm:block group-hover:text-primary transition-colors"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Scrollable View Area -->
+            <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8" id="view-container">
+                
+                <!-- VIEW: OVERVIEW -->
+                <div id="view-overview" class="dashboard-view animate-fade-in">
+                    <!-- Welcome Banner -->
+                    <div class="bg-gradient-to-r from-primary to-primary-dark rounded-2xl p-6 sm:p-8 text-white mb-8 flex flex-col sm:flex-row justify-between items-center gap-6 shadow-lg relative overflow-hidden">
+                        <div class="absolute right-0 top-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-2">Good Morning, Alex</h3>
+                            <p class="text-blue-100">Here's your health overview for today. You have 1 upcoming appointment.</p>
+                        </div>
+                        <div class="flex gap-3 relative z-10 shrink-0 w-full sm:w-auto">
+                            <button onclick="switchView('appointments', document.querySelector('[onclick*=\'appointments\']'))" class="bg-white text-primary font-bold py-2 px-6 rounded-xl shadow hover:bg-gray-50 flex-1 sm:flex-none">Book Appointment</button>
+                        </div>
+                    </div>
+
+                    <!-- Summary Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-surface rounded-xl p-5 border border-custom shadow-sm flex items-center gap-4 hover:border-primary transition-colors cursor-pointer" onclick="switchView('appointments', document.querySelector('[onclick*=\'appointments\']'))">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0"><i class="fa-regular fa-calendar-check"></i></div>
+                            <div>
+                                <p class="text-sm text-text-muted font-semibold">Upcoming Appt</p>
+                                <p class="text-xl font-bold text-heading">1 Today</p>
+                            </div>
+                        </div>
+                        <div class="bg-surface rounded-xl p-5 border border-custom shadow-sm flex items-center gap-4 hover:border-primary transition-colors cursor-pointer" onclick="switchView('prescriptions', document.querySelector('[onclick*=\'prescriptions\']'))">
+                            <div class="w-12 h-12 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-pills"></i></div>
+                            <div>
+                                <p class="text-sm text-text-muted font-semibold">Active Rx</p>
+                                <p class="text-xl font-bold text-heading">3 Meds</p>
+                            </div>
+                        </div>
+                        <div class="bg-surface rounded-xl p-5 border border-custom shadow-sm flex items-center gap-4 hover:border-primary transition-colors cursor-pointer" onclick="switchView('labs', document.querySelector('[onclick*=\'labs\']'))">
+                            <div class="w-12 h-12 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-flask"></i></div>
+                            <div>
+                                <p class="text-sm text-text-muted font-semibold">Lab Reports</p>
+                                <p class="text-xl font-bold text-heading">2 New</p>
+                            </div>
+                        </div>
+                        <div class="bg-surface rounded-xl p-5 border border-custom shadow-sm flex items-center gap-4 hover:border-primary transition-colors cursor-pointer" onclick="switchView('tracking', document.querySelector('[onclick*=\'tracking\']'))">
+                            <div class="w-12 h-12 rounded-lg bg-green-100 text-green-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-shield-heart"></i></div>
+                            <div>
+                                <p class="text-sm text-text-muted font-semibold">Health Score</p>
+                                <p class="text-xl font-bold text-heading text-green-500">92/100</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Upcoming Appointment -->
+                        <div class="lg:col-span-1">
+                            <h4 class="font-bold text-lg mb-4">Next Appointment</h4>
+                            <div class="bg-surface rounded-2xl border border-custom p-6 shadow-sm">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <img src="https://i.pravatar.cc/150?img=32" alt="Dr" class="w-14 h-14 rounded-full border-2 border-primary">
+                                    <div>
+                                        <h5 class="font-bold text-heading">Dr. Sarah Jenkins</h5>
+                                        <p class="text-sm text-primary">Cardiology</p>
+                                    </div>
+                                </div>
+                                <div class="bg-alt rounded-xl p-4 mb-6">
+                                    <div class="flex items-center gap-3 mb-3 text-sm">
+                                        <i class="fa-regular fa-calendar text-text-muted w-4"></i>
+                                        <span class="font-semibold">Today, Oct 24, 2026</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mb-3 text-sm">
+                                        <i class="fa-regular fa-clock text-text-muted w-4"></i>
+                                        <span class="font-semibold">2:30 PM - 3:00 PM</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-sm">
+                                        <i class="fa-solid fa-video text-green-500 w-4"></i>
+                                        <span class="font-semibold">Virtual Consultation</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3">
+                                    <button class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 rounded-xl font-semibold transition-colors text-sm">Join Call</button>
+                                    <button class="flex-1 bg-alt border border-custom hover:border-primary text-text-heading py-2 rounded-xl font-semibold transition-colors text-sm">Reschedule</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Health Analytics Quick View -->
+                        <div class="lg:col-span-2">
+                            <h4 class="font-bold text-lg mb-4">Vitals Overview</h4>
+                            <div class="bg-surface rounded-2xl border border-custom p-6 shadow-sm h-[320px] flex items-center justify-center">
+                                <canvas id="vitalsOverviewChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- (Other views will be populated dynamically or hidden here. For brevity, adding a few representative ones) -->
+                
+                <!-- VIEW: APPOINTMENTS -->
+                <div id="view-appointments" class="dashboard-view hidden animate-fade-in">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold">My Appointments</h3>
+                        <button class="btn-primary text-sm py-2 px-4 rounded-lg">Book New</button>
+                    </div>
+                    
+                    <!-- Tabs -->
+                    <div class="flex gap-6 border-b border-custom mb-6">
+                        <button class="pb-3 border-b-2 border-primary text-primary font-semibold">Upcoming</button>
+                        <button class="pb-3 border-b-2 border-transparent text-text-muted hover:text-heading">Past</button>
+                        <button class="pb-3 border-b-2 border-transparent text-text-muted hover:text-heading">Cancelled</button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Appt Item -->
+                        <div class="bg-surface border border-custom rounded-xl p-5 flex flex-col md:flex-row items-center justify-between gap-4 hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-4 w-full md:w-auto">
+                                <img src="https://i.pravatar.cc/150?img=32" alt="Dr" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <h5 class="font-bold text-heading">Dr. Sarah Jenkins</h5>
+                                    <p class="text-xs text-text-muted">Cardiology • Virtual</p>
+                                </div>
+                            </div>
+                            <div class="text-left md:text-center w-full md:w-auto">
+                                <p class="font-bold text-sm">Oct 24, 2026</p>
+                                <p class="text-xs text-text-muted">2:30 PM</p>
+                            </div>
+                            <div class="w-full md:w-auto flex gap-2">
+                                <button class="btn-secondary py-1.5 px-4 text-xs">Reschedule</button>
+                                <button class="bg-green-500 text-white rounded-full py-1.5 px-4 text-xs font-bold hover:bg-green-600">Join</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: TRACKING -->
+                <div id="view-tracking" class="dashboard-view hidden animate-fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Health Tracking</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-surface rounded-2xl border border-custom p-6">
+                            <h4 class="font-bold text-lg mb-4 text-heading">Heart Rate</h4>
+                            <div class="h-64"><canvas id="hrChart"></canvas></div>
+                        </div>
+                        <div class="bg-surface rounded-2xl border border-custom p-6">
+                            <h4 class="font-bold text-lg mb-4 text-heading">Blood Pressure</h4>
+                            <div class="h-64"><canvas id="bpChart"></canvas></div>
+                        </div>
+                        <div class="bg-surface rounded-2xl border border-custom p-6">
+                            <h4 class="font-bold text-lg mb-4 text-heading">Weight & BMI</h4>
+                            <div class="h-64"><canvas id="weightChart"></canvas></div>
+                        </div>
+                        <div class="bg-surface rounded-2xl border border-custom p-6">
+                            <h4 class="font-bold text-lg mb-4 text-heading">Sleep</h4>
+                            <div class="h-64"><canvas id="sleepChart"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- VIEW: DOCTORS -->
+                <div id="view-doctors" class="dashboard-view hidden animate-fade-in">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold">My Care Team</h3>
+                        <button class="btn-secondary text-sm py-2 px-4 rounded-lg">Find Doctor</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <!-- Doctor 1 -->
+                        <div class="bg-surface border border-custom rounded-2xl p-6 shadow-sm hover:border-primary transition-colors flex flex-col items-center text-center">
+                            <img src="https://i.pravatar.cc/150?img=32" alt="Dr. Jenkins" class="w-24 h-24 rounded-full border-4 border-alt mb-4">
+                            <h4 class="font-bold text-lg text-heading">Dr. Sarah Jenkins</h4>
+                            <p class="text-sm text-primary mb-4">Cardiology</p>
+                            <div class="flex gap-2 w-full">
+                                <button class="flex-1 bg-alt border border-custom py-2 rounded-xl text-sm font-semibold hover:border-primary hover:text-primary transition-colors"><i class="fa-regular fa-comment-dots mr-2"></i> Message</button>
+                                <button class="flex-1 btn-primary py-2 rounded-xl text-sm shadow-sm">Book</button>
+                            </div>
+                        </div>
+                        <!-- Doctor 2 -->
+                        <div class="bg-surface border border-custom rounded-2xl p-6 shadow-sm hover:border-primary transition-colors flex flex-col items-center text-center">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Dr. Patel" class="w-24 h-24 rounded-full border-4 border-alt mb-4">
+                            <h4 class="font-bold text-lg text-heading">Dr. Amit Patel</h4>
+                            <p class="text-sm text-primary mb-4">Primary Care</p>
+                            <div class="flex gap-2 w-full">
+                                <button class="flex-1 bg-alt border border-custom py-2 rounded-xl text-sm font-semibold hover:border-primary hover:text-primary transition-colors"><i class="fa-regular fa-comment-dots mr-2"></i> Message</button>
+                                <button class="flex-1 btn-primary py-2 rounded-xl text-sm shadow-sm">Book</button>
+                            </div>
+                        </div>
+                        <!-- Doctor 3 -->
+                        <div class="bg-surface border border-custom rounded-2xl p-6 shadow-sm hover:border-primary transition-colors flex flex-col items-center text-center">
+                            <img src="https://i.pravatar.cc/150?img=47" alt="Dr. Chen" class="w-24 h-24 rounded-full border-4 border-alt mb-4">
+                            <h4 class="font-bold text-lg text-heading">Dr. Emily Chen</h4>
+                            <p class="text-sm text-primary mb-4">Dermatology</p>
+                            <div class="flex gap-2 w-full">
+                                <button class="flex-1 bg-alt border border-custom py-2 rounded-xl text-sm font-semibold hover:border-primary hover:text-primary transition-colors"><i class="fa-regular fa-comment-dots mr-2"></i> Message</button>
+                                <button class="flex-1 btn-primary py-2 rounded-xl text-sm shadow-sm">Book</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: RECORDS -->
+                <div id="view-records" class="dashboard-view hidden animate-fade-in">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold">Medical Records</h3>
+                        <button class="btn-primary text-sm py-2 px-4 rounded-lg"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Upload</button>
+                    </div>
+                    <div class="bg-surface border border-custom rounded-2xl overflow-hidden shadow-sm">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-alt border-b border-custom text-text-muted text-sm uppercase tracking-wider">
+                                        <th class="p-4 font-semibold whitespace-nowrap">Document Name</th>
+                                        <th class="p-4 font-semibold whitespace-nowrap">Date</th>
+                                        <th class="p-4 font-semibold whitespace-nowrap">Provider</th>
+                                        <th class="p-4 font-semibold text-right whitespace-nowrap">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-custom">
+                                    <tr class="hover:bg-alt/50 transition-colors">
+                                        <td class="p-4 flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded bg-blue-100 text-blue-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-file-medical"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="font-bold text-sm text-heading truncate">Annual Physical Summary</p>
+                                                <p class="text-xs text-text-muted">PDF • 1.2 MB</p>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 text-sm whitespace-nowrap">Oct 15, 2026</td>
+                                        <td class="p-4 text-sm whitespace-nowrap">Dr. Amit Patel</td>
+                                        <td class="p-4 text-right whitespace-nowrap">
+                                            <button class="p-2 text-text-muted hover:text-primary transition-colors"><i class="fa-regular fa-eye"></i></button>
+                                            <button class="p-2 text-text-muted hover:text-primary transition-colors"><i class="fa-solid fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-alt/50 transition-colors">
+                                        <td class="p-4 flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded bg-purple-100 text-purple-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-x-ray"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="font-bold text-sm text-heading truncate">Chest X-Ray Results</p>
+                                                <p class="text-xs text-text-muted">JPG • 4.5 MB</p>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 text-sm whitespace-nowrap">Sep 02, 2026</td>
+                                        <td class="p-4 text-sm whitespace-nowrap">City Imaging Center</td>
+                                        <td class="p-4 text-right whitespace-nowrap">
+                                            <button class="p-2 text-text-muted hover:text-primary transition-colors"><i class="fa-regular fa-eye"></i></button>
+                                            <button class="p-2 text-text-muted hover:text-primary transition-colors"><i class="fa-solid fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: PRESCRIPTIONS -->
+                <div id="view-prescriptions" class="dashboard-view hidden animate-fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Active Prescriptions</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-surface border border-custom rounded-2xl p-6 flex flex-col hover:border-primary transition-colors shadow-sm">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-capsules"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-lg text-heading">Lisinopril</h4>
+                                        <p class="text-sm text-text-muted">10mg Tablet</p>
+                                    </div>
+                                </div>
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Active</span>
+                            </div>
+                            <div class="bg-alt rounded-xl p-4 mb-4 flex-1">
+                                <p class="text-sm font-semibold mb-1">Instructions:</p>
+                                <p class="text-sm text-text-muted">Take 1 tablet daily by mouth.</p>
+                            </div>
+                            <div class="flex justify-between items-center pt-4 border-t border-custom">
+                                <p class="text-xs text-text-muted">Refills left: <span class="font-bold text-heading">2</span></p>
+                                <button class="btn-primary text-sm py-2 px-4 rounded-lg">Request Refill</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: LABS -->
+                <div id="view-labs" class="dashboard-view hidden animate-fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Lab Reports</h3>
+                    <div class="space-y-4">
+                        <div class="bg-surface border border-custom rounded-xl p-5 flex flex-col md:flex-row items-center justify-between gap-4 hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-4 w-full md:w-auto">
+                                <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-flask"></i></div>
+                                <div>
+                                    <h5 class="font-bold text-heading">Comprehensive Metabolic Panel</h5>
+                                    <p class="text-xs text-text-muted">Ordered by Dr. Patel • Oct 20, 2026</p>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-auto flex justify-start md:justify-center">
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-green-200">Normal</span>
+                            </div>
+                            <div class="w-full md:w-auto flex justify-end gap-2">
+                                <button class="btn-secondary py-1.5 px-4 text-xs font-bold">View Details</button>
+                            </div>
+                        </div>
+                        <div class="bg-surface border border-custom rounded-xl p-5 flex flex-col md:flex-row items-center justify-between gap-4 hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-4 w-full md:w-auto">
+                                <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-droplet"></i></div>
+                                <div>
+                                    <h5 class="font-bold text-heading">Lipid Panel</h5>
+                                    <p class="text-xs text-text-muted">Ordered by Dr. Patel • Oct 20, 2026</p>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-auto flex justify-start md:justify-center">
+                                <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-yellow-200">Attention</span>
+                            </div>
+                            <div class="w-full md:w-auto flex justify-end gap-2">
+                                <button class="btn-secondary py-1.5 px-4 text-xs font-bold">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: MEDICATIONS -->
+                <div id="view-medications" class="dashboard-view hidden animate-fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Daily Medications</h3>
+                    <div class="bg-surface border border-custom rounded-2xl shadow-sm p-6 mb-6">
+                        <div class="flex items-center justify-between border-b border-custom pb-4 mb-4">
+                            <h4 class="font-bold text-lg text-heading flex items-center gap-2"><i class="fa-regular fa-sun text-orange-500"></i> Morning</h4>
+                            <span class="text-sm text-text-muted">8:00 AM</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 hover:bg-alt rounded-lg transition-colors group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-6 h-6 rounded border-2 border-primary flex items-center justify-center cursor-pointer hover:bg-primary/20"><i class="fa-solid fa-check text-primary text-xs opacity-0 hover:opacity-100 transition-opacity"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm">Lisinopril 10mg</p>
+                                    <p class="text-xs text-text-muted">1 Tablet, with food</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: MESSAGES -->
+                <div id="view-messages" class="dashboard-view hidden animate-fade-in h-[calc(100vh-12rem)] min-h-[500px]">
+                    <div class="flex h-full bg-surface border border-custom rounded-2xl shadow-sm overflow-hidden flex-col md:flex-row">
+                        <!-- Sidebar list -->
+                        <div class="w-full md:w-1/3 border-b md:border-b-0 md:border-r border-custom flex flex-col h-1/2 md:h-full bg-alt/50">
+                            <div class="p-4 border-b border-custom bg-surface shrink-0 flex justify-between items-center">
+                                <h4 class="font-bold text-heading">Inbox</h4>
+                                <button class="text-primary hover:bg-primary/10 p-2 rounded-full transition-colors"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </div>
+                            <div class="overflow-y-auto flex-1">
+                                <div class="p-4 border-b border-custom hover:bg-surface cursor-pointer bg-surface transition-colors">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <span class="font-bold text-sm">Dr. Sarah Jenkins</span>
+                                        <span class="text-xs text-primary font-bold">10:42 AM</span>
+                                    </div>
+                                    <p class="text-xs text-text-muted line-clamp-2 text-heading font-medium">Your recent lab results look good. We will discuss them in your upcoming appointment.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Chat area -->
+                        <div class="w-full md:w-2/3 flex flex-col h-1/2 md:h-full bg-surface">
+                            <div class="p-4 border-b border-custom shrink-0 flex items-center gap-4">
+                                <img src="https://i.pravatar.cc/150?img=32" alt="Dr" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <h4 class="font-bold text-heading">Dr. Sarah Jenkins</h4>
+                                    <p class="text-xs text-green-500 font-semibold">Online</p>
+                                </div>
+                            </div>
+                            <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-alt/30">
+                                <div class="flex flex-col items-start">
+                                    <div class="bg-white dark:bg-gray-800 border border-custom rounded-2xl rounded-tl-none p-3 max-w-[80%] shadow-sm">
+                                        <p class="text-sm">Hello Alex, I've reviewed your latest lab results. Everything looks stable. We'll go over the details in our session today.</p>
+                                    </div>
+                                    <span class="text-xs text-text-muted mt-1 ml-1">10:42 AM</span>
+                                </div>
+                            </div>
+                            <div class="p-4 border-t border-custom shrink-0 bg-surface">
+                                <div class="relative flex items-center">
+                                    <input type="text" placeholder="Type a message..." class="w-full bg-alt border border-custom rounded-full pl-4 pr-12 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                    <button class="absolute right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors"><i class="fa-solid fa-paper-plane text-xs"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: INSURANCE -->
+                <div id="view-insurance" class="dashboard-view hidden animate-fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Insurance & Billing</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-lg mb-4">Active Coverage</h4>
+                            <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden h-52 flex flex-col justify-between">
+                                <div class="absolute right-0 top-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                                <div class="flex justify-between items-start relative z-10">
+                                    <div class="font-bold text-xl tracking-wider">BlueShield Health</div>
+                                    <i class="fa-solid fa-shield-virus text-3xl opacity-80"></i>
+                                </div>
+                                <div class="relative z-10">
+                                    <p class="text-blue-100 text-xs uppercase tracking-wider mb-1">Member ID</p>
+                                    <p class="font-mono text-xl mb-4 tracking-widest">BSH-9283-441-A</p>
+                                    <div class="flex justify-between text-sm">
+                                        <div>
+                                            <p class="text-blue-200 text-xs">Group</p>
+                                            <p class="font-semibold">89345</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-blue-200 text-xs">Plan</p>
+                                            <p class="font-semibold">PPO Platinum</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-4">Recent Claims</h4>
+                            <div class="bg-surface border border-custom rounded-2xl shadow-sm p-4 space-y-4">
+                                <div class="flex justify-between items-center border-b border-custom pb-4">
+                                    <div>
+                                        <p class="font-bold text-sm text-heading">City Hospital - Outpatient</p>
+                                        <p class="text-xs text-text-muted">Sep 15, 2026</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-bold text-sm">$150.00</p>
+                                        <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider">Approved</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: PROFILE -->
+                <div id="view-profile" class="dashboard-view hidden animate-fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Patient Profile</h3>
+                    <div class="bg-surface border border-custom rounded-2xl shadow-sm p-6 max-w-3xl">
+                        <div class="flex items-center gap-6 mb-8 pb-8 border-b border-custom">
+                            <div class="relative shrink-0">
+                                <img src="https://i.pravatar.cc/150?img=68" alt="Profile" class="w-24 h-24 rounded-full border-4 border-alt">
+                                <button class="absolute bottom-0 right-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center border-2 border-surface hover:bg-primary-dark transition-colors"><i class="fa-solid fa-camera text-xs"></i></button>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-heading">Alex Johnson</h4>
+                                <p class="text-sm text-text-muted mb-2">Patient ID: #98421 • DOB: May 14, 1990</p>
+                            </div>
+                        </div>
+                        <form class="space-y-6" onsubmit="event.preventDefault()">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold mb-2 text-heading">Email Address</label>
+                                    <input type="email" value="alex@example.com" class="w-full bg-alt border border-custom rounded-lg px-4 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none text-text-base">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold mb-2 text-heading">Phone Number</label>
+                                    <input type="tel" value="(555) 123-4567" class="w-full bg-alt border border-custom rounded-lg px-4 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none text-text-base">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2 text-heading">Home Address</label>
+                                <input type="text" value="123 Maple Street, Apt 4B, New York, NY 10001" class="w-full bg-alt border border-custom rounded-lg px-4 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none text-text-base">
+                            </div>
+                            <div class="pt-4 flex justify-end">
+                                <button type="submit" class="btn-primary py-2 px-6 rounded-xl shadow-sm">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- VIEW: SETTINGS -->
+                <div id="view-settings" class="dashboard-view hidden animate-fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Account Settings</h3>
+                    <div class="bg-surface border border-custom rounded-2xl shadow-sm overflow-hidden max-w-3xl">
+                        <div class="p-6 border-b border-custom">
+                            <h4 class="font-bold text-lg mb-4 text-heading">Notifications</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-semibold text-sm text-heading">Appointment Reminders</p>
+                                        <p class="text-xs text-text-muted">Receive SMS and email reminders 24h before.</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" value="" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-500 peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-semibold text-sm text-heading">Lab Results Alerts</p>
+                                        <p class="text-xs text-text-muted">Get notified when new lab results are available.</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" value="" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-500 peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-4 text-heading">Security</h4>
+                            <button class="btn-secondary py-2 px-4 rounded-lg text-sm font-semibold">Change Password</button>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <style>
+        .animate-fade-in { animation: fadeIn 0.3s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

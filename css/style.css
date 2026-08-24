@@ -1,0 +1,192 @@
+/* =========================================
+   HealthBridge Portal - Base Styles
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+  /* Color Palette - Light Mode */
+  --color-primary: #0284c7; /* Soft Blue/Teal mix */
+  --color-primary-dark: #0369a1;
+  --color-secondary: #0f172a; /* Deep Navy */
+  --color-accent: #0ea5e9; /* Light Cyan */
+  
+  --color-bg-base: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-bg-alt: #f1f5f9;
+  
+  --color-text-base: #334155;
+  --color-text-muted: #64748b;
+  --color-text-heading: #0f172a;
+  
+  --color-border: #e2e8f0;
+  --color-border-focus: #bae6fd;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-float: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark Mode Variables */
+html.dark {
+  --color-primary: #38bdf8;
+  --color-primary-dark: #0ea5e9;
+  --color-secondary: #f8fafc;
+  --color-accent: #7dd3fc;
+  
+  --color-bg-base: #0f172a;
+  --color-bg-surface: #1e293b;
+  --color-bg-alt: #0f172a;
+  
+  --color-text-base: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-heading: #f8fafc;
+  
+  --color-border: #334155;
+  --color-border-focus: #0369a1;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  --shadow-float: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.6);
+  
+  --glass-bg: rgba(30, 41, 59, 0.8);
+  --glass-border: rgba(51, 65, 85, 0.5);
+}
+
+/* --- Base Resets & Typography --- */
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-base);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* --- Utility Classes for Custom Variables --- */
+.bg-base { background-color: var(--color-bg-base); }
+.bg-surface { background-color: var(--color-bg-surface); }
+.bg-alt { background-color: var(--color-bg-alt); }
+.bg-primary { background-color: var(--color-primary); }
+
+.text-primary { color: var(--color-primary); }
+.text-heading { color: var(--color-text-heading); }
+.text-base-color { color: var(--color-text-base); }
+.text-muted { color: var(--color-text-muted); }
+
+.border-custom { border-color: var(--color-border); }
+
+/* --- Components --- */
+.glass-header {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-md);
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text-heading);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: rgba(2, 132, 199, 0.05);
+}
+html.dark .btn-secondary:hover {
+  background-color: rgba(56, 189, 248, 0.05);
+}
+
+.premium-card {
+  background-color: var(--color-bg-surface);
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.premium-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-float);
+  border-color: var(--color-primary);
+}
+
+/* --- RTL Support --- */
+html[dir="rtl"] { text-align: right; }
+html[dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+html[dir="rtl"] .mr-auto { margin-left: auto; margin-right: 0; }
+html[dir="rtl"] .text-left { text-align: right; }
+html[dir="rtl"] .text-right { text-align: left; }
+html[dir="rtl"] .space-x-4 > * + * { margin-left: 0; margin-right: 1rem; }
+
+/* Animations */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+.animate-floating { animation: floating 4s ease-in-out infinite; }
+.animate-floating-delayed { animation: floating 4s ease-in-out 2s infinite; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-base); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
