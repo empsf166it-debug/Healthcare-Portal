@@ -25,7 +25,7 @@ function initAll() {
 
 /* --- Theme Toggle (Light/Dark Mode) --- */
 function initTheme() {
-    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
     const htmlEl = document.documentElement;
     
     // Check localStorage or system preference
@@ -40,28 +40,31 @@ function initTheme() {
         updateThemeIcon(false);
     }
     
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            htmlEl.classList.toggle('dark');
-            const isDark = htmlEl.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeIcon(isDark);
-        });
-    }
+    themeToggleBtns.forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', () => {
+                htmlEl.classList.toggle('dark');
+                const isDark = htmlEl.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeIcon(isDark);
+            });
+        }
+    });
 }
 
 function updateThemeIcon(isDark) {
-    const themeIcon = document.getElementById('theme-icon');
-    if (themeIcon) {
-        // Toggle FontAwesome classes or similar depending on what's used
-        if (isDark) {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        } else {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
+    const themeIcons = [document.getElementById('theme-icon'), document.getElementById('theme-icon-mobile')];
+    themeIcons.forEach(icon => {
+        if (icon) {
+            if (isDark) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
         }
-    }
+    });
 }
 
 /* --- RTL Toggle --- */

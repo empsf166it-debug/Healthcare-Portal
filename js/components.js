@@ -13,7 +13,7 @@ const components = {
                         <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
                             <i class="fa-solid fa-briefcase-medical text-xl"></i>
                         </div>
-                        <span class="text-xl font-bold text-heading hidden sm:block tracking-tight">HealthBridge</span>
+                        <span class="text-xl font-bold text-heading tracking-tight">HealthBridge</span>
                     </a>
 
                     <!-- Desktop Navigation -->
@@ -34,7 +34,6 @@ const components = {
                         </button>
 
                         <div class="w-px h-6 bg-gray-300 dark:bg-gray-700 mx-2"></div>
-                        <a href="login.html" class="font-semibold hover:text-primary transition-colors">Login</a>
                         <a href="signup.html" class="btn-primary py-2 px-5 text-sm shadow-md hover:shadow-lg">Sign Up</a>
                         <a href="dashboard.html" class="btn-secondary py-2 px-5 text-sm hidden">Dashboard</a>
                     </div>
@@ -42,7 +41,7 @@ const components = {
                     <!-- Mobile Menu Button -->
                     <div class="xl:hidden flex items-center gap-4">
                         <button id="theme-toggle-mobile" class="p-2 text-text-muted">
-                            <i class="fa-solid fa-moon"></i>
+                            <i id="theme-icon-mobile" class="fa-solid fa-moon"></i>
                         </button>
                         <button id="mobile-menu-btn" class="p-2 text-heading focus:outline-none">
                             <i class="fa-solid fa-bars text-2xl"></i>
@@ -70,7 +69,6 @@ const components = {
                     <a href="contact.html" class="mobile-nav-link text-base-color text-lg hover:text-primary transition-colors" data-page="contact.html">Contact</a>
                     <a href="dashboard.html" class="mobile-nav-link text-base-color text-lg hover:text-primary transition-colors" data-page="dashboard.html">Dashboard</a>
                     <hr class="border-custom">
-                    <a href="login.html" class="text-base-color text-lg hover:text-primary transition-colors">Login</a>
                     <a href="signup.html" class="btn-primary justify-center w-full">Sign Up</a>
 
                 </nav>
@@ -93,9 +91,9 @@ const components = {
                             Bridging the gap between patients and premium healthcare. Secure, modern, and built for your wellness journey.
                         </p>
                         <div class="flex gap-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary dark:hover:bg-primary transition-colors text-heading hover:text-white dark:hover:text-white"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary dark:hover:bg-primary transition-colors text-heading hover:text-white dark:hover:text-white"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary dark:hover:bg-primary transition-colors text-heading hover:text-white dark:hover:text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="group w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fa-brands fa-x-twitter text-heading group-hover:text-white"></i></a>
+                            <a href="#" class="group w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fa-brands fa-linkedin-in text-heading group-hover:text-white"></i></a>
+                            <a href="#" class="group w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fa-brands fa-facebook-f text-heading group-hover:text-white"></i></a>
                         </div>
                     </div>
 

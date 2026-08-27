@@ -165,7 +165,34 @@ function initCharts() {
                 options: commonOptions
             });
         }
-        
-        // Additional charts can be initialized similarly
+        // Weight & BMI Chart (Tracking Page)
+        const ctxWeight = document.getElementById('weightChart');
+        if (ctxWeight) {
+            new Chart(ctxWeight, {
+                type: 'line',
+                data: {
+                    labels: ['W1', 'W2', 'W3', 'W4'],
+                    datasets: [
+                        { label: 'Weight (lbs)', data: [175, 174, 172, 171], borderColor: '#0ea5e9', tension: 0.4 }
+                    ]
+                },
+                options: commonOptions
+            });
+        }
+
+        // Sleep Chart (Tracking Page)
+        const ctxSleep = document.getElementById('sleepChart');
+        if (ctxSleep) {
+            new Chart(ctxSleep, {
+                type: 'bar',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [
+                        { label: 'Hours of Sleep', data: [7, 6.5, 8, 7.5, 6, 8.5, 8], backgroundColor: '#6366f1' }
+                    ]
+                },
+                options: commonOptions
+            });
+        }
     }, 100);
 }
